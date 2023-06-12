@@ -58,6 +58,24 @@ def edit_spendings(id):
 #'post' 
 #/spendings/<id>/
 
+@spending_blueprint.route("/spendings/<id>/", methods = ['POST'])
+def update_spending(id):
+    amount_spent = request.form['amount_spent']
+    tag = request.form['tag']
+    merchant = request.form['merchant']
+    merchant_id = request.form['merchant_id']
+
+    merchant = merchant_repository.select(merchant_id)
+    spending = Spending(amount_spent, tag, merchant, id)
+    spending_repository.update(spending)
+    return redirect('/spending')
+
+
 #delete 
 #'delete'
 #/spendings/<id>
+
+@spending_blueprint.route("/spendings/<id>/delete", methods=['POST'])
+def delete_spending(id):
+    spending_repository.delete(id)
+    return redirect('/spendings')
