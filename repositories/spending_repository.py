@@ -26,6 +26,19 @@ def select_all():
         spendings.append(spending)
     return spendings 
 
+def select(id):
+    spending = None
+    sql = "SELECT * FROM spendings WhERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        merchant = merchant_repository.select(result['merchant_id'])
+        spending = Spending(result['amount'], ['tag'], merchant, result['id'])
+    return spending
+    
+
 #delete
 def delete_all():
     sql ="DELETE FROM spendings"

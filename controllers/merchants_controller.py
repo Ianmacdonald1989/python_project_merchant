@@ -23,14 +23,14 @@ def new_spending():
 @spendings_blueprint.route("/spendings", methods=['POST'])
 def create_spending():
     print("here")
-    amount_spent = request.form['Amount']
+    amount = request.form['Amount']
     merchant_id = request.form['merchant_id']
     tag = request.form['tag']
     
     print(merchant_id)
     merchant = merchant_repository.select(merchant_id)
     print(merchant.id)
-    spending = Spending(amount_spent, tag, merchant)
+    spending = Spending(amount, tag, merchant)
 
     spending_repository.save(spending)
     return redirect('/spendings')
@@ -45,20 +45,19 @@ def spendings():
 #'get'
 #/spendings/<id>
 @spendings_blueprint.route("/spendings/<id>", methods=['GET'])
-def edit_spending():
+def show_spending(id):
     spending = spending_repository.select(id)
-    merchant = merchant_repository.select_all()
-    return render_template("/spendings/show.html", merchant = merchant)
+    return render_template("spendings/show.html", spending = spending)
 
 #edit 
 #'get'
 #/spending/<id>/edit 
 
 @spendings_blueprint.route("/spendings/<id>/edit", methods=['GET'])
-def edit_spendings(id):
+def edit_spending(id):
     spending = spending_repository.select(id)
     merchants = merchant_repository.select_all()
-    return render_template("spendings/edit.html", spending = spending, all_merchants = merchants )
+    return render_template('spendings/edit.html', spending = spending, all_merchants = merchants)
 
 #update 
 #'post' 
@@ -66,12 +65,12 @@ def edit_spendings(id):
 
 @spendings_blueprint.route("/spendings/<id>/", methods = ['POST'])
 def update_spendings(id):
-    amount_spent = request.form['amount_spent']
+    amount = request.form['amount']
     merchant_id = request.form['merchant_id']
     tag = request.form['tag']    
 
     merchant = merchant_repository.select(merchant_id)
-    spending = Spending(amount_spent, tag, merchant, id)
+    spending = Spending(amount, tag, merchant, id)
     spending_repository.update(spending)
     return redirect('/spendings')
 
