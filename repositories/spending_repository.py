@@ -5,13 +5,13 @@ from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository 
 
 #save
-def save(spendings):
+def save(spending):
     sql = "INSERT INTO spendings (amount, tag, merchant_id) VALUES (%s, %s, %s) RETURNING *"
-    values = [spendings.amount_spent, spendings.tag, spendings.merchant.id]
+    values = [spending.amount_spent, spending.tag, spending.merchant.id]
     results = run_sql(sql, values)
     id = results[0]['id']
-    spendings.id = id
-    return spendings
+    spending.id = id
+    return spending
 
 #select
 def select_all():

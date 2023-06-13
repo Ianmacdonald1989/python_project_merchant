@@ -1,5 +1,5 @@
 {% extends "base.html" %} 
-{% blocks content %} 
+{% block content %} 
 
 {% for spending in all_spendings %} 
 <div class="content">
@@ -13,3 +13,6 @@
 
     </form>
 </div>
+
+{% endfor %}
+{% endblock %}

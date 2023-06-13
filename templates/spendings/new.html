@@ -2,7 +2,7 @@
 
 {% block content %} 
 
-<form action="/spendings" methods="post">
+<form action="/spendings" method="post">
 <div>
 <label for="amount_spent">Amount:</label>
 <input type="number" id="Amount" name="Amount"  value="0" inputmode="numeric" placeholder="Amount" min="0" max="100" required autofocus>
@@ -16,7 +16,7 @@
 <div>
     <label for="merchant">Merchant:</label>
     <select id="merchant" name="merchant_id">
-        {% for merchant in merchants %} 
+        {% for merchant in all_merchants %} 
 
         <option value="{{ merchant.id }}">{{ merchant.name }}</option>
 

@@ -22,10 +22,10 @@ merchant_repository.select_all()
 
 #TRANSACTIONS 
 
-spending1 = Spending(15, "italian", merchant1)
+spending1 = Spending(15, "Italian", merchant1)
 spending_repository.save(spending1)
 
-spending2 = Spending(10, "Nashville", merchant2)
+spending2 = Spending(10, "nashville", merchant2)
 spending_repository.save(spending2)
 
 

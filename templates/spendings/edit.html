@@ -1,9 +1,9 @@
 {% extends "base.html" %} 
 {% block content %} 
 
-<form action="/spendings/{{spendings.id}}" methods ="post">
+<form action="/spendings/{{spending.id}}" methods ="post">
 <div>
-    <label for="amount_spent">Amount Spent:</label>
+    <label for="amount">Amount Spent:</label>
     <input type="number" id="number"  value="0" placeholder="Amount" {{spending.amount_spent}}required autofocus>
 </div>
 

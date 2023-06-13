@@ -1,4 +1,3 @@
-# import pdb
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from repositories import spending_repository, merchant_repository
@@ -7,19 +6,15 @@ from models.spending import Spending
 
 spendings_blueprint = Blueprint("spendings", __name__)
 
-#index 
-@spendings_blueprint.route("/spendings")
-def spendings():
-    spendings = spending_repository.select_all()
-    return render_template("spendings/index.html", all_spendings = spendings)
+
 
 #new
 #'get'
 #/spendings/new
 @spendings_blueprint.route("/spendings/new", methods=['GET'])
 def new_spending():
-    merchant = merchant_repository.select_all()
-    return render_template("spending/new.html", merchants = merchant)
+    merchants = merchant_repository.select_all()
+    return render_template("spendings/new.html", all_merchants = merchants)
 
 #create
 #'post'
@@ -27,16 +22,25 @@ def new_spending():
 
 @spendings_blueprint.route("/spendings", methods=['POST'])
 def create_spending():
-    amount_spent = request.form['amount_spent']
-    tag = request.form['tag']
-    merchant = request.form['merchant']
+    print("here")
+    amount_spent = request.form['Amount']
     merchant_id = request.form['merchant_id']
+    tag = request.form['tag']
     
+    print(merchant_id)
     merchant = merchant_repository.select(merchant_id)
+    print(merchant.id)
     spending = Spending(amount_spent, tag, merchant)
 
     spending_repository.save(spending)
+    return redirect('/spendings')
     
+#index 
+@spendings_blueprint.route("/spendings")
+def spendings():
+    spendings = spending_repository.select_all()
+    return render_template("spendings/index.html", all_spendings = spendings)
+
 #show
 #'get'
 #/spendings/<id>
@@ -54,7 +58,7 @@ def edit_spending():
 def edit_spendings(id):
     spending = spending_repository.select(id)
     merchants = merchant_repository.select_all()
-    return render_template("/spendings/edit.html", spending = spending, all_merchants = merchants )
+    return render_template("spendings/edit.html", spending = spending, all_merchants = merchants )
 
 #update 
 #'post' 
@@ -63,9 +67,8 @@ def edit_spendings(id):
 @spendings_blueprint.route("/spendings/<id>/", methods = ['POST'])
 def update_spendings(id):
     amount_spent = request.form['amount_spent']
-    tag = request.form['tag']
-    merchant = request.form['merchant']
     merchant_id = request.form['merchant_id']
+    tag = request.form['tag']    
 
     merchant = merchant_repository.select(merchant_id)
     spending = Spending(amount_spent, tag, merchant, id)
@@ -82,4 +85,4 @@ def delete_spendings(id):
     spending_repository.delete(id)
     return redirect('/spendings')
 
-# pdb.set_trace()
+
