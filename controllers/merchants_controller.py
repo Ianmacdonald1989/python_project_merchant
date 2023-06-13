@@ -11,7 +11,7 @@ spendings_blueprint = Blueprint("spendings", __name__)
 @spendings_blueprint.route("/spendings")
 def spendings():
     spendings = spending_repository.select_all()
-    return render_template("spendings/index.html", all_spending = spendings)
+    return render_template("spendings/index.html", all_spendings = spendings)
 
 #new
 #'get'

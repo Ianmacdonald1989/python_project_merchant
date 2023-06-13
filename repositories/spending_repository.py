@@ -20,9 +20,10 @@ def select_all():
     sql = "SELECT * FROM spendings"
     results = run_sql(sql)
 
-    if results is not None: 
-        merchant = merchant_repository.select(results['merchant_id'])
-        spendings = Spending(results['amount_spent'], results['tag'], merchant, results['id'])
+    for row in results: 
+        merchant = merchant_repository.select(row['merchant_id'])
+        spending = Spending(row['amount'], row['tag'], merchant, row['id'])
+        spendings.append(spending)
     return spendings 
 
 #delete
