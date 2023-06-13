@@ -1,3 +1,4 @@
+import pdb
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from repositories import spending_repository, merchant_repository
@@ -79,3 +80,5 @@ def update_spendings(id):
 def delete_spendings(id):
     spending_repository.delete(id)
     return redirect('/spendings')
+
+pdb.set_trace()

@@ -5,13 +5,13 @@ from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository 
 
 #save
-def save(spending):
-    sql = "INSERT INTO spendings (amount_spent, tag, merchant, merchant_id) VALUES  (%s, %s, %s %s) RETURNING *"
-    values = [spending.amount_spent, spending.tag, spending.merchant.id]
+def save(spendings):
+    sql = "INSERT INTO spendings (amount, tag, merchant_id) VALUES (%s, %s, %s) RETURNING *"
+    values = [spendings.amount_spent, spendings.tag, spendings.merchant.id]
     results = run_sql(sql, values)
-    id = results [0]['id']
-    spending.id = id
-    return spending
+    id = results[0]['id']
+    spendings.id = id
+    return spendings
 
 #select
 def select_all():
@@ -34,7 +34,7 @@ def delete_all():
 def delete(id):
     sql ="DELETE FROM  spendings WHERE id = %s"
     values = [id]
-    run_sql(sdql, values)
+    run_sql(sql, values)
 
 
 #update 
