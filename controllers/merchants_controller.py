@@ -1,16 +1,17 @@
-import pdb
+# import pdb
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from repositories import spending_repository, merchant_repository
 from models.spending import Spending
+
 
 spendings_blueprint = Blueprint("spendings", __name__)
 
 #index 
 @spendings_blueprint.route("/spendings")
 def spendings():
-    spendings=spending_repository.select_all()
-    return render_template("spendings/index.html", all_spendings = spendings)
+    spendings = spending_repository.select_all()
+    return render_template("spendings/index.html", all_spending = spendings)
 
 #new
 #'get'
@@ -18,7 +19,7 @@ def spendings():
 @spendings_blueprint.route("/spendings/new", methods=['GET'])
 def new_spending():
     merchant = merchant_repository.select_all()
-    return render_template("spendings/new.html", merchants = merchant_repository)
+    return render_template("spending/new.html", merchants = merchant)
 
 #create
 #'post'
@@ -81,4 +82,4 @@ def delete_spendings(id):
     spending_repository.delete(id)
     return redirect('/spendings')
 
-pdb.set_trace()
+# pdb.set_trace()

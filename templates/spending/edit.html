@@ -4,13 +4,20 @@
 <form action="/spendings/{{spendings.id}}" methods ="post">
 <div>
     <label for="amount_spent">Amount Spent:</label>
-    <input type="number" id="number"  value="0" placeholder="Amount" required autofocus>
+    <input type="number" id="number"  value="0" placeholder="Amount" {{spending.amount_spent}}required autofocus>
 </div>
 
 <div>
-    
+<label for="tag">Tag:</label>
+<input type="text" id="tag" name="tag" value="{{spending.tag}}" required>
 </div>
 
+<div> 
+    <Label for="merchant">Merchant:</Label>
+    <input type="text" id="merchant" name="merchant" value="{{spending.merchant}}">
+</div>
+
+<button type="submit">Update Transaction</button>
 
 
 

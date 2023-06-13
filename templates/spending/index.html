@@ -1,3 +1,15 @@
 {% extends "base.html" %} 
 {% blocks content %} 
 
+{% for spending in all_spendings %} 
+<div class="content">
+    {{spending.merchant.name}}
+    <div class="amount_spent">
+        <a href="/spendings/{{spending.id}}">{{spending.amount_spent}}</a>
+
+        <span class="tag">{{spending.tag}}</span>
+
+    </div>
+
+    </form>
+</div>

@@ -22,8 +22,8 @@ def select_all():
 
     if results is not None: 
         merchant = merchant_repository.select(results['merchant_id'])
-        spending = Spending(results['amount_spent'], results['tag'], merchant, results['id'])
-    return spending 
+        spendings = Spending(results['amount_spent'], results['tag'], merchant, results['id'])
+    return spendings 
 
 #delete
 def delete_all():
