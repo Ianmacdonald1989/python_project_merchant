@@ -3,10 +3,10 @@ from flask import Blueprint
 from repositories import spending_repository, merchant_repository
 from models.spending import Spending
 
-spending_blueprint = Blueprint("spendings", __name__)
+spendings_blueprint = Blueprint("spendings", __name__)
 
 #index 
-@spending_blueprint.route("/spendings")
+@spendings_blueprint.route("/spendings")
 def spendings():
     spendings=spending_repository.select_all()
     return render_template('/spendings/index.html', all_spendings = spendings)
@@ -14,7 +14,7 @@ def spendings():
 #new
 #'get'
 #/spendings/new
-@spending_blueprint.route("/spending/new", methods=['GET'])
+@spendings_blueprint.route("/spending/new", methods=['GET'])
 def new_spending():
     merchant = merchant_repository.select_all()
     return render_template("/spendings/new.html", all_merchants = merchants)
@@ -23,7 +23,7 @@ def new_spending():
 #'post'
 #/spendings
 
-@spending_blueprint.route("/spendings", methods=['POST'])
+@spendings_blueprint.route("/spendings", methods=['POST'])
 def create_spending():
     amount_spent = request.form['amount_spent']
     tag = request.form['tag']
@@ -38,7 +38,7 @@ def create_spending():
 #show
 #'get'
 #/spendings/<id>
-@spending_blueprint.route("/spendings/<id>", methods=['GET'])
+@spendings_blueprint.route("/spendings/<id>", methods=['GET'])
 def edit_spending():
     spending = spending_repository.select(id)
     merchant = merchant_repository.select_all()
@@ -48,7 +48,7 @@ def edit_spending():
 #'get'
 #/spending/<id>/edit 
 
-@spending_blueprint.route("/spendings/<id>/edit", methods=['GET'])
+@spendings_blueprint.route("/spendings/<id>/edit", methods=['GET'])
 def edit_spendings(id):
     spending = spending_repository.select(id)
     merchants = merchant_repository.select_all()
@@ -58,7 +58,7 @@ def edit_spendings(id):
 #'post' 
 #/spendings/<id>/
 
-@spending_blueprint.route("/spendings/<id>/", methods = ['POST'])
+@spendings_blueprint.route("/spendings/<id>/", methods = ['POST'])
 def update_spending(id):
     amount_spent = request.form['amount_spent']
     tag = request.form['tag']

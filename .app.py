@@ -1,10 +1,10 @@
 from flask import Flask, render_template
 
-from controllers.spending_controller import spending_blueprint 
+from controllers.merchants_controller import spendings_blueprint 
 
 app = Flask(__name__)
 
-app.register_blueprint(spending_blueprint)
+app.register_blueprint(spendings_blueprint)
 
 @app.route('/')
 def home():
