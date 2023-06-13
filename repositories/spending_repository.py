@@ -38,4 +38,8 @@ def delete(id):
 
 
 #update 
+def update(spending):
+    sql = "UPDATE spendings SET (amount_spent. tag, merchant) = (%s, %s, %s) WHERE id = %s"
+    values = [spending.amount_spent, spending.tag, spending.merchant, spending.id]
+    run_sql(sql, values)
 
