@@ -4,7 +4,7 @@ from models.merchant import Merchant
 from models.spending import Spending 
 
 def save(merchant):
-    sql = "INSERT INTO USERS (name) VALUES (%s) RETURNING *"
+    sql = "INSERT INTO merchants (name) VALUES (%s) RETURNING *"
     values = [merchant.name]
     results = run_sql(sql, values)
     id = results[0]['id']

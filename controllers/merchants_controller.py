@@ -9,15 +9,15 @@ spendings_blueprint = Blueprint("spendings", __name__)
 @spendings_blueprint.route("/spendings")
 def spendings():
     spendings=spending_repository.select_all()
-    return render_template('/spendings/index.html', all_spendings = spendings)
+    return render_template("spendings/index.html", all_spendings = spendings)
 
 #new
 #'get'
 #/spendings/new
-@spendings_blueprint.route("/spending/new", methods=['GET'])
+@spendings_blueprint.route("/spendings/new", methods=['GET'])
 def new_spending():
     merchant = merchant_repository.select_all()
-    return render_template("/spendings/new.html", all_merchant = merchant)
+    return render_template("spendings/new.html", merchants = merchant_repository)
 
 #create
 #'post'
@@ -59,7 +59,7 @@ def edit_spendings(id):
 #/spendings/<id>/
 
 @spendings_blueprint.route("/spendings/<id>/", methods = ['POST'])
-def update_spending(id):
+def update_spendings(id):
     amount_spent = request.form['amount_spent']
     tag = request.form['tag']
     merchant = request.form['merchant']
@@ -68,7 +68,7 @@ def update_spending(id):
     merchant = merchant_repository.select(merchant_id)
     spending = Spending(amount_spent, tag, merchant, id)
     spending_repository.update(spending)
-    return redirect('/spending')
+    return redirect('/spendings')
 
 
 #delete 
@@ -76,6 +76,6 @@ def update_spending(id):
 #/spendings/<id>
 
 @spendings_blueprint.route("/spendings/<id>/delete", methods=['POST'])
-def delete_spending(id):
+def delete_spendings(id):
     spending_repository.delete(id)
     return redirect('/spendings')
