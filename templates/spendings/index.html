@@ -5,7 +5,7 @@
 <div class="content">
     {{spending.merchant.name}}
     <div class="amount_spent">
-        <a href="/spendings/{{spending.id}}">{{spending.amount_spent}}</a>
+        <a href="/spendings/{{spending.id}}">£{{spending.amount_spent}}</a>
 
         <span class="tag">{{spending.tag}}</span>
 
@@ -15,4 +15,9 @@
 </div>
 
 {% endfor %}
+
+<div class="total">
+<p> Total £{{ total_spent }} </p>
+</div>
+
 {% endblock %}

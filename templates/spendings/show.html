@@ -2,12 +2,16 @@
 {% block content %} 
 
 <div>
+    <section>
     All Transactions 
+
     <p>{{spending.amount_spent}}</p>
     <hr>
     <p>{{spending.tag}}</p>
     <p>{{spending.merchant}}</p>
     <p><a href="/spendings/{{spending.id}}/edit">Edit</p>
+
+    </section>
 </div>
 
 {% endblock %} 

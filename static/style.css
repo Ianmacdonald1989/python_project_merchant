@@ -1,0 +1,46 @@
+body{
+    font-family: "Helvetica", arial, sans-serif; font-size: 16px;
+
+}
+
+body > header{
+    padding: 1rem;
+    background: lightgray;
+    display: flex;
+    justify-content: space-between;
+}
+
+header > nav > ul{
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+title{
+    display: flex;
+    color:blue;
+    text-size-adjust: 100px;
+    justify-content: space-between;
+    
+
+
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    margin: 0 auto;
+    justify-content: space-between;
+    
+    
+}
+
+
+
+
+
+
+
+

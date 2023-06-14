@@ -53,7 +53,17 @@ def delete(id):
 
 #update 
 def update(spending):
-    sql = "UPDATE spendings SET (amount_spent. tag, merchant) = (%s, %s, %s) WHERE id = %s"
-    values = [spending.amount_spent, spending.tag, spending.merchant, spending.id]
+    sql = "UPDATE spendings SET (amount, tag, merchant_id) = (%s, %s, %s) WHERE id = %s"
+    values = [spending.amount_spent, spending.tag, spending.merchant.id, spending.id]
     run_sql(sql, values)
+
+#TOTAL TRANSACTOINS 
+
+def total_amount_spent():
+    total = 0 
+    sql = "SELECT sum(amount) FROM spendings"
+    results = run_sql(sql)
+    # for row in results: 
+        # total += row['amount']
+    return results[0]['sum'] 
 

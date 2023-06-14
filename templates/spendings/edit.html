@@ -2,9 +2,10 @@
 {% block content %} 
 
 <form action="/spendings/{{spending.id}}" method="post">
+    
 <div>
     <label for="amount">Amount:</label>
-    <input type="number" id="number"  value="0" placeholder="Amount" {{spending.amount}} required autofocus>
+    <input type="number" id="number"  value="{{spending.amount_spent}}" name="Amount" placeholder="Amount"  required autofocus>
 </div>
 
 <div>
@@ -14,7 +15,7 @@
 
 <div> 
     <Label for="merchant">Merchant:</Label>
-    <input type="text" id="merchant" name="merchant" value="{{spending.merchant}}" required>
+    <input type="text" id="merchant" name="merchant" value="{{spending.merchant.name}}" required>
 </div>
 
 <div>
