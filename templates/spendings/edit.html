@@ -9,14 +9,14 @@
 </div>
 
 <div>
-<label for="tag">Tag:</label>
+<label for="tag">Transaction Type:</label>
 <input type="text" id="tag" name="tag" value="{{spending.tag}}" required>
 </div>
-
+<!-- 
 <div> 
     <Label for="merchant">Merchant:</Label>
     <input type="text" id="merchant" name="merchant" value="{{spending.merchant.name}}" required>
-</div>
+</div> -->
 
 <div>
     <label for="merchant">Merchant:</label>
@@ -30,8 +30,9 @@
     {% endfor %} 
     </select>
 </div>
-
+<div>
 <button type="submit">Update Transaction</button>
+</div>
 
 
 </form>

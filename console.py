@@ -15,8 +15,12 @@ merchant1 = Merchant("Pizza Planet")
 print(merchant1.id)
 merchant_repository.save(merchant1)
 print(merchant1.id)
+
 merchant2 = Merchant("Poultry Palace")
 merchant_repository.save(merchant2)
+
+merchant3 = Merchant("Barn Toys")
+merchant_repository.save(merchant3)
 
 merchant_repository.select_all()
 
