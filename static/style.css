@@ -10,7 +10,7 @@ ul{
     padding:0;
     width: 200px;
     background-color:#f1f1f1;
-    font-family:fantasy;
+    font-family:'Times New Roman', Times, serif;
     text-align: center;
 }
 
@@ -28,13 +28,14 @@ h1{
     display: flex;
     color:silver;
     text-size-adjust: 100px;
-    justify-content: space-between;
-    font-family:fantasy;
+    justify-content: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     position:fixed;
     top: 30px;
-    right: 380px;
+    right: 560px;
     text-decoration-line:underline;
     text-align:right;
+    
     
 }
 
@@ -42,12 +43,14 @@ h1{
 h2{
     display: flex;
     color:gray;
-    text-size-adjust: 50px;
-    font-family:fantasy;
-    text-align: center;
+    text-size-adjust: 40px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: left;
     position:relative;
     bottom: 30px;
-    left:1px;
+    left:-60px;
+    flex-wrap: wrap;
+    gap: 30px;
     
 }
 
@@ -56,29 +59,41 @@ input, select, button {
     width : 100%;
     padding: 10px;
     margin: 10px;
-    font-family: fantasy;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     box-sizing: border-box;
 
 } 
 
+container, transactions{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
 
-button {
+
+
+button:hover {
     margin-top: 10px;
     margin-left: 2px;
     font-size: 1.4em;
     color: blue;
-    font-family: fantasy;
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 .container{
     
-    padding: 20px;
+    padding: 50px;
     width: 400px;
     height: 500px;
     margin: 1%;
     display: flex;
-    justify-content:flex-start;
-    text-align: center;
+    flex-wrap: wrap;
+    flex-direction:column-reverse;
+    justify-content:flex-end;
+    text-align:center;
     
 }
 
@@ -87,18 +102,27 @@ button {
     padding: 20px;
     width: 300px;
     height: 60px;
-    margin: 1%;
+    margin: 5%;
     justify-content: space-around;
     flex-wrap: wrap;
     background-color: orangered;
+    border-style:ridge;
+    border-color: #000;
 }
 
-.total{
-    display: flex;
+.total {
+    color: blue;
+    padding: 15px;
+    width: 200px;
+    height: 30px;
+
     margin: 1%;
     justify-content: space-around;
     flex-wrap: wrap;
+    
+    border-style:groove;
 } 
+
 
 
 

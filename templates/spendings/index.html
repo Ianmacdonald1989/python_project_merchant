@@ -1,6 +1,12 @@
 {% extends "base.html" %} 
 {% block content %} 
 
+<div class="total">
+
+    <p> Total Spend: £{{ total_spent }} </p>
+    
+    </div>
+
 {% for spending in all_spendings %} 
 <div class="content">
     {{spending.merchant.name}}
@@ -16,8 +22,7 @@
 
 {% endfor %}
 
-<div class="total">
-<p> Total £{{ total_spent }} </p>
-</div>
+
+
 
 {% endblock %}
