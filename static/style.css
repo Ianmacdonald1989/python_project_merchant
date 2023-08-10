@@ -115,11 +115,9 @@ button:hover {
     padding: 15px;
     width: 200px;
     height: 30px;
-
     margin: 1%;
     justify-content: space-around;
     flex-wrap: wrap;
-    
     border-style:groove;
 } 
 
